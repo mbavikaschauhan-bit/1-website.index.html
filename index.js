@@ -242,10 +242,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleScroll = () => {
         const scrollTop = window.scrollY;
         
-        // Sticky Header
-        if (header) {
-            header.classList.toggle('scrolled', scrollTop > 50);
-        }
+        // Sticky Header - Disabled to prevent jitter
+        // if (header) {
+        //     header.classList.toggle('scrolled', scrollTop > 50);
+        // }
         
         // Scroll Progress Bar
         if (scrollProgressBar) {

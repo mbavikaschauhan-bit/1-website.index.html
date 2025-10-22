@@ -38,17 +38,8 @@ html {
     transition: padding 0.3s ease-out;
 }
 
-#main-header.scrolled nav {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-}
-
 #main-header {
-    transition: background-color 0.3s ease-out, box-shadow 0.3s ease-out;
-}
-
-#main-header.scrolled {
-    background-color: rgba(13, 17, 23, 0.85);
+    background-color: rgba(13, 17, 23, 0.95) !important;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
