@@ -20,6 +20,14 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="index.css">
+    <style>
+        /* FAQ New Layout Styles */
+        .faq-answer {
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+    </style>
 <script type="importmap">
 {
   "imports": {
@@ -839,113 +847,358 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-white">Frequently Asked Questions</h2>
                     <p class="mt-2 text-gray-400">Find answers to common questions about Tradlyst.</p>
                 </div>
-                <div class="space-y-1">
-                    <div class="card-bg">
-                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-1" aria-expanded="false" aria-controls="faq-answer-1">
-                            <h3 class="text-base font-semibold text-white text-left">How does Tradlyst help improve my trading?</h3>
-                            <div class="faq-icon" aria-hidden="true">
-                                <span class="faq-icon-bar"></span>
-                                <span class="faq-icon-bar"></span>
-                            </div>
+                <div class="space-y-6">
+                    <div class="bg-gray-800 shadow-md rounded-lg">
+                        <button
+                            class="w-full flex items-center justify-between p-4 focus:outline-none"
+                            onclick="toggleItem(1)"
+                            aria-expanded="false"
+                            aria-controls="content-1"
+                            id="faq-button-1"
+                        >
+                            <span class="text-lg font-semibold">
+                                How does Tradlyst help improve my trading?
+                            </span>
+                            <svg
+                                id="icon-plus-1"
+                                class="w-6 h-6 text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                />
+                            </svg>
+                            <svg
+                                id="icon-minus-1"
+                                class="w-6 h-6 text-gray-400 hidden"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                />
+                            </svg>
                         </button>
-                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-1" role="region" aria-labelledby="faq-question-1">
-                            <p>Tradlyst helps you improve by providing deep insights into your trading patterns. By logging your trades, tracking your psychological state, and analyzing detailed performance reports, you can identify what's working and what's not, eliminate costly emotional mistakes, and refine your strategies with data-driven confidence.</p>
+                        <div
+                            id="content-1"
+                            class="text-gray-300 overflow-hidden max-h-0 transition-all duration-500"
+                            role="region"
+                            aria-labelledby="faq-button-1"
+                        >
+                            <p class="p-4">Tradlyst helps you improve by providing deep insights into your trading patterns. By logging your trades, tracking your psychological state, and analyzing detailed performance reports, you can identify what's working and what's not, eliminate costly emotional mistakes, and refine your strategies with data-driven confidence.</p>
                         </div>
                     </div>
-                    <div class="card-bg">
-                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-2" aria-expanded="false" aria-controls="faq-answer-2">
-                            <h3 class="text-base font-semibold text-white text-left">Is my trading data secure?</h3>
-                            <div class="faq-icon" aria-hidden="true">
-                                <span class="faq-icon-bar"></span>
-                                <span class="faq-icon-bar"></span>
-                            </div>
+                    <div class="bg-gray-800 shadow-md rounded-lg">
+                        <button
+                            class="w-full flex items-center justify-between p-4 focus:outline-none"
+                            onclick="toggleItem(2)"
+                            aria-expanded="false"
+                            aria-controls="content-2"
+                            id="faq-button-2"
+                        >
+                            <span class="text-lg font-semibold">Is my trading data secure?</span>
+                            <svg
+                                id="icon-plus-2"
+                                class="w-6 h-6 text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                />
+                            </svg>
+                            <svg
+                                id="icon-minus-2"
+                                class="w-6 h-6 text-gray-400 hidden"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                />
+                            </svg>
                         </button>
-                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-2" role="region" aria-labelledby="faq-question-2">
-                            <p>Absolutely. We use bank-level 256-bit AES encryption for all your data. Your privacy is our top priority, and we will never sell or share your individual trading data.</p>
+                        <div
+                            id="content-2"
+                            class="text-gray-300 overflow-hidden max-h-0 transition-all duration-500"
+                            role="region"
+                            aria-labelledby="faq-button-2"
+                        >
+                            <p class="p-4">Absolutely. We use bank-level 256-bit AES encryption for all your data. Your privacy is our top priority, and we will never sell or share your individual trading data.</p>
                         </div>
                     </div>
-                    <div class="card-bg">
-                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-3" aria-expanded="false" aria-controls="faq-answer-3">
-                            <h3 class="text-base font-semibold text-white text-left">Are there any additional costs or fees?</h3>
-                            <div class="faq-icon" aria-hidden="true">
-                                <span class="faq-icon-bar"></span>
-                                <span class="faq-icon-bar"></span>
-                            </div>
+                    <div class="bg-gray-800 shadow-md rounded-lg">
+                        <button
+                            class="w-full flex items-center justify-between p-4 focus:outline-none"
+                            onclick="toggleItem(3)"
+                            aria-expanded="false"
+                            aria-controls="content-3"
+                            id="faq-button-3"
+                        >
+                            <span class="text-lg font-semibold">Are there any additional costs or fees?</span>
+                            <svg
+                                id="icon-plus-3"
+                                class="w-6 h-6 text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                />
+                            </svg>
+                            <svg
+                                id="icon-minus-3"
+                                class="w-6 h-6 text-gray-400 hidden"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                />
+                            </svg>
                         </button>
-                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-3" role="region" aria-labelledby="faq-question-3">
-                           <p>No. Our pricing is completely transparent. The price you see for our plans is the price you pay, with no hidden fees, setup costs, or additional charges.</p>
+                        <div
+                            id="content-3"
+                            class="text-gray-300 overflow-hidden max-h-0 transition-all duration-500"
+                            role="region"
+                            aria-labelledby="faq-button-3"
+                        >
+                            <p class="p-4">No. Our pricing is completely transparent. The price you see for our plans is the price you pay, with no hidden fees, setup costs, or additional charges.</p>
                         </div>
                     </div>
-                    <div class="card-bg">
-                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-4" aria-expanded="false" aria-controls="faq-answer-4">
-                            <h3 class="text-base font-semibold text-white text-left">Which brokers do you support for automatic import?</h3>
-                            <div class="faq-icon" aria-hidden="true">
-                                <span class="faq-icon-bar"></span>
-                                <span class="faq-icon-bar"></span>
-                            </div>
+                    <div class="bg-gray-800 shadow-md rounded-lg">
+                        <button
+                            class="w-full flex items-center justify-between p-4 focus:outline-none"
+                            onclick="toggleItem(4)"
+                            aria-expanded="false"
+                            aria-controls="content-4"
+                            id="faq-button-4"
+                        >
+                            <span class="text-lg font-semibold">Which brokers do you support for automatic import?</span>
+                            <svg
+                                id="icon-plus-4"
+                                class="w-6 h-6 text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                />
+                            </svg>
+                            <svg
+                                id="icon-minus-4"
+                                class="w-6 h-6 text-gray-400 hidden"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                />
+                            </svg>
                         </button>
-                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-4" role="region" aria-labelledby="faq-question-4">
-                            <p>We currently support automated trade importing for Zerodha and Upstox. We are actively working on adding support for other popular Indian brokers like AngelOne, Fyers, and Groww. Stay tuned!</p>
+                        <div
+                            id="content-4"
+                            class="text-gray-300 overflow-hidden max-h-0 transition-all duration-500"
+                            role="region"
+                            aria-labelledby="faq-button-4"
+                        >
+                            <p class="p-4">We currently support automated trade importing for Zerodha and Upstox. We are actively working on adding support for other popular Indian brokers like AngelOne, Fyers, and Groww. Stay tuned!</p>
                         </div>
                     </div>
-                     <div class="card-bg">
-                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-5" aria-expanded="false" aria-controls="faq-answer-5">
-                            <h3 class="text-base font-semibold text-white text-left">Can I cancel my subscription at any time?</h3>
-                            <div class="faq-icon" aria-hidden="true">
-                                <span class="faq-icon-bar"></span>
-                                <span class="faq-icon-bar"></span>
-                            </div>
+                    <div class="bg-gray-800 shadow-md rounded-lg">
+                        <button
+                            class="w-full flex items-center justify-between p-4 focus:outline-none"
+                            onclick="toggleItem(5)"
+                            aria-expanded="false"
+                            aria-controls="content-5"
+                            id="faq-button-5"
+                        >
+                            <span class="text-lg font-semibold">Can I cancel my subscription at any time?</span>
+                            <svg
+                                id="icon-plus-5"
+                                class="w-6 h-6 text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                />
+                            </svg>
+                            <svg
+                                id="icon-minus-5"
+                                class="w-6 h-6 text-gray-400 hidden"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                />
+                            </svg>
                         </button>
-                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-5" role="region" aria-labelledby="faq-question-5">
-                            <p>Yes, you can cancel your Pro subscription at any time. You will retain access to all Pro features until the end of your current billing period.</p>
+                        <div
+                            id="content-5"
+                            class="text-gray-300 overflow-hidden max-h-0 transition-all duration-500"
+                            role="region"
+                            aria-labelledby="faq-button-5"
+                        >
+                            <p class="p-4">Yes, you can cancel your Pro subscription at any time. You will retain access to all Pro features until the end of your current billing period.</p>
                         </div>
                     </div>
-                     <div class="card-bg">
-                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-6" aria-expanded="false" aria-controls="faq-answer-6">
-                            <h3 class="text-base font-semibold text-white text-left">Is there a mobile app?</h3>
-                             <div class="faq-icon" aria-hidden="true">
-                                <span class="faq-icon-bar"></span>
-                                <span class="faq-icon-bar"></span>
-                            </div>
+                    <div class="bg-gray-800 shadow-md rounded-lg">
+                        <button
+                            class="w-full flex items-center justify-between p-4 focus:outline-none"
+                            onclick="toggleItem(6)"
+                            aria-expanded="false"
+                            aria-controls="content-6"
+                            id="faq-button-6"
+                        >
+                            <span class="text-lg font-semibold">Is there a mobile app?</span>
+                            <svg
+                                id="icon-plus-6"
+                                class="w-6 h-6 text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                />
+                            </svg>
+                            <svg
+                                id="icon-minus-6"
+                                class="w-6 h-6 text-gray-400 hidden"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                />
+                            </svg>
                         </button>
-                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-6" role="region" aria-labelledby="faq-question-6">
-                            <p>A native mobile app for iOS and Android is currently in development and is one of our top priorities. You can follow our public roadmap for the latest updates on its release. In the meantime, our web platform is fully responsive and works great on mobile browsers.</p>
+                        <div
+                            id="content-6"
+                            class="text-gray-300 overflow-hidden max-h-0 transition-all duration-500"
+                            role="region"
+                            aria-labelledby="faq-button-6"
+                        >
+                            <p class="p-4">A native mobile app for iOS and Android is currently in development and is one of our top priorities. You can follow our public roadmap for the latest updates on its release. In the meantime, our web platform is fully responsive and works great on mobile browsers.</p>
                         </div>
                     </div>
-                    <div class="card-bg">
-                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-7" aria-expanded="false" aria-controls="faq-answer-7">
-                            <h3 class="text-base font-semibold text-white text-left">What kind of analytics does the Pro plan offer?</h3>
-                             <div class="faq-icon" aria-hidden="true">
-                                <span class="faq-icon-bar"></span>
-                                <span class="faq-icon-bar"></span>
-                            </div>
+                    <div class="bg-gray-800 shadow-md rounded-lg">
+                        <button
+                            class="w-full flex items-center justify-between p-4 focus:outline-none"
+                            onclick="toggleItem(7)"
+                            aria-expanded="false"
+                            aria-controls="content-7"
+                            id="faq-button-7"
+                        >
+                            <span class="text-lg font-semibold">What kind of analytics does the Pro plan offer?</span>
+                            <svg
+                                id="icon-plus-7"
+                                class="w-6 h-6 text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                />
+                            </svg>
+                            <svg
+                                id="icon-minus-7"
+                                class="w-6 h-6 text-gray-400 hidden"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                />
+                            </svg>
                         </button>
-                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-7" role="region" aria-labelledby="faq-question-7">
-                            <p>The Pro plan offers over 35 advanced metrics, including deep dives into your performance by strategy, instrument, time of day, and market conditions. You can track your equity curve, profit factor, expectancy, max adverse excursion (MAE), and max favorable excursion (MFE) to get a complete picture of your trading edge.</p>
+                        <div
+                            id="content-7"
+                            class="text-gray-300 overflow-hidden max-h-0 transition-all duration-500"
+                            role="region"
+                            aria-labelledby="faq-button-7"
+                        >
+                            <p class="p-4">The Pro plan offers over 35 advanced metrics, including deep dives into your performance by strategy, instrument, time of day, and market conditions. You can track your equity curve, profit factor, expectancy, max adverse excursion (MAE), and max favorable excursion (MFE) to get a complete picture of your trading edge.</p>
                         </div>
                     </div>
-                    <div class="card-bg">
-                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-8" aria-expanded="false" aria-controls="faq-answer-8">
-                            <h3 class="text-base font-semibold text-white text-left">Can I import my past trading history?</h3>
-                             <div class="faq-icon" aria-hidden="true">
-                                <span class="faq-icon-bar"></span>
-                                <span class="faq-icon-bar"></span>
-                            </div>
+                    <div class="bg-gray-800 shadow-md rounded-lg">
+                        <button
+                            class="w-full flex items-center justify-between p-4 focus:outline-none"
+                            onclick="toggleItem(8)"
+                            aria-expanded="false"
+                            aria-controls="content-8"
+                            id="faq-button-8"
+                        >
+                            <span class="text-lg font-semibold">Can I import my past trading history?</span>
+                            <svg
+                                id="icon-plus-8"
+                                class="w-6 h-6 text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                />
+                            </svg>
+                            <svg
+                                id="icon-minus-8"
+                                class="w-6 h-6 text-gray-400 hidden"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                />
+                            </svg>
                         </button>
-                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-8" role="region" aria-labelledby="faq-question-8">
-                            <p>Yes! When you connect your broker account (like Zerodha or Upstox) for the first time, you can import several months of your past trading history. This allows you to immediately start analyzing your past performance and find valuable insights.</p>
+                        <div
+                            id="content-8"
+                            class="text-gray-300 overflow-hidden max-h-0 transition-all duration-500"
+                            role="region"
+                            aria-labelledby="faq-button-8"
+                        >
+                            <p class="p-4">Yes! When you connect your broker account (like Zerodha or Upstox) for the first time, you can import several months of your past trading history. This allows you to immediately start analyzing your past performance and find valuable insights.</p>
                         </div>
                     </div>
-                    <div class="card-bg">
-                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-9" aria-expanded="false" aria-controls="faq-answer-9">
-                            <h3 class="text-base font-semibold text-white text-left">How does the AI Summarizer work?</h3>
-                             <div class="faq-icon" aria-hidden="true">
-                                <span class="faq-icon-bar"></span>
-                                <span class="faq-icon-bar"></span>
-                            </div>
+                    <div class="bg-gray-800 shadow-md rounded-lg">
+                        <button
+                            class="w-full flex items-center justify-between p-4 focus:outline-none"
+                            onclick="toggleItem(9)"
+                            aria-expanded="false"
+                            aria-controls="content-9"
+                            id="faq-button-9"
+                        >
+                            <span class="text-lg font-semibold">How does the AI Summarizer work?</span>
+                            <svg
+                                id="icon-plus-9"
+                                class="w-6 h-6 text-gray-400"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                />
+                            </svg>
+                            <svg
+                                id="icon-minus-9"
+                                class="w-6 h-6 text-gray-400 hidden"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z"
+                                />
+                            </svg>
                         </button>
-                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-9" role="region" aria-labelledby="faq-question-9">
-                            <p>Our AI Summarizer uses advanced language models to analyze your logged trades for a specific period. It identifies your most profitable and least profitable patterns, highlights potential emotional trading habits (like revenge trading after a loss), and provides a concise, easy-to-read summary of your strengths and weaknesses in plain English.</p>
+                        <div
+                            id="content-9"
+                            class="text-gray-300 overflow-hidden max-h-0 transition-all duration-500"
+                            role="region"
+                            aria-labelledby="faq-button-9"
+                        >
+                            <p class="p-4">Our AI Summarizer uses advanced language models to analyze your logged trades for a specific period. It identifies your most profitable and least profitable patterns, highlights potential emotional trading habits (like revenge trading after a loss), and provides a concise, easy-to-read summary of your strengths and weaknesses in plain English.</p>
                         </div>
                     </div>
                 </div>

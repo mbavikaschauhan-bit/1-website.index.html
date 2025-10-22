@@ -30,52 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // --- FAQ ACCORDION (ACCESSIBLE & ROBUST) ---
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    if (faqQuestions.length > 0) {
-        // Initial state setup
-        faqQuestions.forEach(question => {
-            const button = question;
-            const answer = document.getElementById(button.getAttribute('aria-controls'));
-            if (answer) {
-              answer.style.maxHeight = '0px';
-            }
-            button.classList.remove('is-expanded');
-            button.setAttribute('aria-expanded', 'false');
-        });
+    // --- FAQ ACCORDION (NEW LAYOUT) ---
+    window.toggleItem = function(id) {
+        const content = document.getElementById(`content-${id}`);
+        const iconPlus = document.getElementById(`icon-plus-${id}`);
+        const iconMinus = document.getElementById(`icon-minus-${id}`);
+        
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }
 
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const button = question;
-                const answer = document.getElementById(button.getAttribute('aria-controls'));
-                if (!answer) return;
-                const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-                // Close other questions
-                faqQuestions.forEach(otherQuestion => {
-                    if (otherQuestion !== question) {
-                        const otherButton = otherQuestion;
-                        const otherAnswer = document.getElementById(otherButton.getAttribute('aria-controls'));
-                        if(otherAnswer) {
-                           otherAnswer.style.maxHeight = '0px';
-                        }
-                        otherButton.classList.remove('is-expanded');
-                        otherButton.setAttribute('aria-expanded', 'false');
-                    }
-                });
-
-                // Toggle current question
-                if (isExpanded) {
-                    answer.style.maxHeight = '0px';
-                    button.classList.remove('is-expanded');
-                    button.setAttribute('aria-expanded', 'false');
-                } else {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                    button.classList.add('is-expanded');
-                    button.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
+        iconPlus.classList.toggle('hidden');
+        iconMinus.classList.toggle('hidden');
     }
 
     // --- SMOOTH SCROLLING ---
