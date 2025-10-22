@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<!-- Chosen Palette: Dark Theme with Blue, Green, White accents -->
+<!-- Application Structure Plan: The SPA uses a single-page, vertical scrolling layout with thematic sections corresponding to a standard marketing narrative (Intro, Features, Social Proof, Pricing, FAQ, CTA). This structure was chosen because it creates a logical and persuasive user flow, guiding potential customers from awareness to consideration and finally to conversion. Navigation is facilitated by a sticky header with smooth-scrolling links, allowing easy exploration. Key interactions include a dynamic welcome chart to create a professional first impression and an an interactive FAQ accordion to manage information density, enhancing usability without distracting from the core message. -->
+<!-- Visualization & Content Choices: Hero Section Graph: Goal=Engage, Method=Canvas Line Chart (Chart.js), Interaction=None(visual only), Justification=Provides a dynamic, data-centric visual hook without needing user input. FAQ: Goal=Organize, Method=HTML/JS Accordion, Interaction=Click to toggle, Justification=Reduces initial information overload and allows users to self-select topics of interest. Feature Icons/Checkmarks: Goal=Inform, Method=Unicode Characters in HTML, Interaction=None, Justification=Provides clear, lightweight visual cues that adhere to the NO SVG constraint. All choices support the clean, professional aesthetic and the narrative flow of the application. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="India's most advanced trading journal. Track, analyze, and elevate your trading with powerful analytics, AI summaries, and psychology tracking.">
+    <title>Tradlyst | India's Most Advanced Trading Journal</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%233B82F6%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2260%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22%23FFFFFF%22>TD</text></svg>">
+    <link rel="canonical" href="./index.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.25.0"
+  }
+}
+</script>
+    <!-- SEO: Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Tradlyst",
+        "url": "./index.html",
+        "logo": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%233B82F6%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2260%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22%23FFFFFF%22>TD</text></svg>",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@tradlyst.com",
+            "contactType": "Customer Service",
+            "url": "./contact.html"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Tradlyst",
+        "url": "./index.html"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does Tradlyst help improve my trading?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tradlyst helps you improve by providing deep insights into your trading patterns. By logging your trades, tracking your psychological state, and analyzing detailed performance reports, you can identify what's working and what's not, eliminate costly emotional mistakes, and refine your strategies with data-driven confidence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my trading data secure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We use bank-level 256-bit AES encryption for all your data. Your privacy is our top priority, and we will never sell or share your individual trading data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there any additional costs or fees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Our pricing is completely transparent. The price you see for our plans is the price you pay, with no hidden fees, setup costs, or additional charges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which brokers do you support for automatic import?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We currently support automated trade importing for Zerodha and Upstox. We are actively working on adding support for other popular Indian brokers like AngelOne, Fyers, and Groww. Stay tuned!"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I cancel my subscription at any time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can cancel your Pro subscription at any time. You will retain access to all Pro features until the end of your current billing period."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a mobile app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A native mobile app for iOS and Android is currently in development and is one of our top priorities. You can follow our public roadmap for the latest updates on its release. In the meantime, our web platform is fully responsive and works great on mobile browsers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What kind of analytics does the Pro plan offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Pro plan offers over 35 advanced metrics, including deep dives into your performance by strategy, instrument, time of day, and market conditions. You can track your equity curve, profit factor, expectancy, max adverse excursion (MAE), and max favorable excursion (MFE) to get a complete picture of your trading edge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I import my past trading history?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! When you connect your broker account (like Zerodha or Upstox) for the first time, you can import several months of your past trading history. This allows you to immediately start analyzing your past performance and find valuable insights."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the AI Summarizer work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our AI Summarizer uses advanced language models to analyze your logged trades for a specific period. It identifies your most profitable and least profitable patterns, highlights potential emotional trading habits (like revenge trading after a loss), and provides a concise, easy-to-read summary of your strengths and weaknesses in plain English."
+          }
+        }
+      ]
+    }
+    </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+
+<body class="antialiased">
+
+    <div id="scroll-progress-bar"></div>
+    <div id="page-overlay"></div>
+
+    <!-- Header -->
+    <header id="main-header" class="sticky top-0 z-50 bg-opacity-80 backdrop-blur-md border-b border-gray-800">
+        <nav class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-white flex items-center gap-2">
+                <span class="bg-blue-600 rounded-md p-1">TD</span>
+                Tradlyst
+            </a>
+            <div id="nav-links" class="hidden lg:flex items-center space-x-8">
+                <a href="#home" class="nav-link text-gray-300 hover:text-white transition">Home</a>
+                <a href="#features" class="nav-link text-gray-300 hover:text-white transition">Features</a>
+                <a href="#why-tradlyst" class="nav-link text-gray-300 hover:text-white transition">Why Tradlyst</a>
+                <a href="#how-it-works" class="nav-link text-gray-300 hover:text-white transition">How It Works</a>
+                <a href="#testimonials" class="nav-link text-gray-300 hover:text-white transition">Testimonials</a>
+                <a href="#pricing" class="nav-link text-gray-300 hover:text-white transition">Pricing</a>
+                <a href="#faq" class="nav-link text-gray-300 hover:text-white transition">FAQ</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#pricing" class="border border-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition transform hover:scale-105 hidden sm:block btn-ripple">Login / Sign Up</a>
+                <button id="mobile-menu-button" class="lg:hidden text-gray-300 hover:text-white focus:outline-none p-2 -mr-2" aria-label="Open menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="p-8">
+        <div class="flex justify-between items-center mb-8">
+             <a href="#home" class="text-2xl font-bold text-white flex items-center gap-2">
+                <span class="bg-blue-600 rounded-md p-1">TD</span>
+                Tradlyst
+            </a>
+            <button id="mobile-menu-close-button" class="text-gray-400 hover:text-white" aria-label="Close menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-6 text-lg">
+            <a href="#home" class="nav-link-mobile text-gray-300 hover:text-white transition">Home</a>
+            <a href="#features" class="nav-link-mobile text-gray-300 hover:text-white transition">Features</a>
+            <a href="#why-tradlyst" class="nav-link-mobile text-gray-300 hover:text-white transition">Why Tradlyst</a>
+            <a href="#how-it-works" class="nav-link-mobile text-gray-300 hover:text-white transition">How It Works</a>
+            <a href="#testimonials" class="nav-link-mobile text-gray-300 hover:text-white transition">Testimonials</a>
+            <a href="#pricing" class="nav-link-mobile text-gray-300 hover:text-white transition">Pricing</a>
+            <a href="#faq" class="nav-link-mobile text-gray-300 hover:text-white transition">FAQ</a>
+            <a href="#pricing" class="nav-link-mobile mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-center transition">Login / Sign Up</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="py-16 sm:py-20 md:py-24 relative overflow-hidden animated-gradient-bg">
+            <div class="container mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight">
+                        India's Most Advanced Trading Journal
+                    </h1>
+                    <p class="mt-4 text-lg sm:text-xl text-gray-400 max-w-xl mx-auto lg:mx-0">
+                        Track, analyze, and elevate your trading game with our powerful journaling platform designed for serious traders.
+                    </p>
+                    <div class="mt-8 flex justify-center lg:justify-start gap-4 flex-wrap">
+                        <a href="#pricing" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition text-lg transform hover:scale-105 cta-pulse btn-ripple">Start Analyzing Your Trades</a>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center h-full min-h-[350px]">
+                   <div class="chart-grid-container">
+                        <div class="chart-grid-bg"></div>
+                        <div class="chart-scroller">
+                            <div class="candlestick-group">
+                                <!-- Variety of candlestick shapes -->
+                                <div class="candlestick red" style="left: 2%; bottom: 20%; --h: 80px; --body-h: 40px; --body-b: 15px; --anim-duration: 6.2s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 6%; bottom: 22%; --h: 90px; --body-h: 50px; --body-b: 15px; --anim-duration: 7.8s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 10%; bottom: 23%; --h: 75px; --body-h: 30px; --body-b: 20px; --anim-duration: 6.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Spinning Top -->
+                                <div class="candlestick green" style="left: 14%; bottom: 25%; --h: 60px; --body-h: 15px; --body-b: 22px; --anim-duration: 5.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Inverted Hammer / Shooting Star -->
+                                <div class="candlestick red" style="left: 18%; bottom: 30%; --h: 55px; --body-h: 10px; --body-b: 5px; --anim-duration: 6.8s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Doji -->
+                                <div class="candlestick red" style="left: 22%; bottom: 28%; --h: 70px; --body-h: 4px; --body-b: 33px; --anim-duration: 7.1s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Hammer -->
+                                <div class="candlestick green" style="left: 26%; bottom: 26%; --h: 80px; --body-h: 15px; --body-b: 60px; --anim-duration: 5.9s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 30%; bottom: 30%; --h: 60px; --body-h: 40px; --body-b: 10px; --anim-duration: 5.1s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 34%; bottom: 35%; --h: 40px; --body-h: 20px; --body-b: 5px; --anim-duration: 4.8s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 38%; bottom: 45%; --h: 50px; --body-h: 25px; --body-b: 10px; --anim-duration: 7.4s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 40%; bottom: 25%; --h: 70px; --body-h: 40px; --body-b: 20px; --anim-duration: 5.3s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 42%; bottom: 55%; --h: 75px; --body-h: 50px; --body-b: 10px; --anim-duration: 6.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 46%; bottom: 20%; --h: 65px; --body-h: 35px; --body-b: 15px; --anim-duration: 8.0s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 50%; bottom: 22%; --h: 85px; --body-h: 25px; --body-b: 40px; --anim-duration: 7.2s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Long Bullish Candle -->
+                                <div class="candlestick green" style="left: 54%; bottom: 25%; --h: 110px; --body-h: 80px; --body-b: 10px; --anim-duration: 5.2s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 58%; bottom: 42%; --h: 80px; --body-h: 40px; --body-b: 15px; --anim-duration: 7.6s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 62%; bottom: 50%; --h: 50px; --body-h: 30px; --body-b: 5px; --anim-duration: 6.9s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 66%; bottom: 48%; --h: 40px; --body-h: 20px; --body-b: 10px; --anim-duration: 4.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 70%; bottom: 50%; --h: 55px; --body-h: 20px; --body-b: 15px; --anim-duration: 6.7s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 72%; bottom: 28%; --h: 80px; --body-h: 30px; --body-b: 40px; --anim-duration: 6.6s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 74%; bottom: 52%; --h: 60px; --body-h: 35px; --body-b: 10px; --anim-duration: 7.0s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Another Spinning Top -->
+                                <div class="candlestick red" style="left: 78%; bottom: 55%; --h: 45px; --body-h: 10px; --body-b: 17px; --anim-duration: 6.1s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 82%; bottom: 58%; --h: 70px; --body-h: 20px; --body-b: 20px; --anim-duration: 7.3s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Bullish Marubozu (almost no wicks) -->
+                                <div class="candlestick green" style="left: 86%; bottom: 62%; --h: 120px; --body-h: 115px; --body-b: 2px; --anim-duration: 5.8s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 90%; bottom: 80%; --h: 90px; --body-h: 50px; --body-b: 15px; --anim-duration: 7.9s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Added Candlesticks to fill the gap -->
+                                <div class="candlestick red" style="left: 93%; bottom: 65%; --h: 80px; --body-h: 60px; --body-b: 10px; --anim-duration: 6.3s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 96%; bottom: 45%; --h: 70px; --body-h: 55px; --body-b: 5px; --anim-duration: 7.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 99%; bottom: 30%; --h: 60px; --body-h: 20px; --body-b: 30px; --anim-duration: 5.6s;"><div class="wick"></div><div class="body"></div></div>
+                            </div>
+                            <div class="candlestick-group" aria-hidden="true">
+                               <!-- Variety of candlestick shapes -->
+                                <div class="candlestick red" style="left: 2%; bottom: 20%; --h: 80px; --body-h: 40px; --body-b: 15px; --anim-duration: 6.2s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 6%; bottom: 22%; --h: 90px; --body-h: 50px; --body-b: 15px; --anim-duration: 7.8s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 10%; bottom: 23%; --h: 75px; --body-h: 30px; --body-b: 20px; --anim-duration: 6.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Spinning Top -->
+                                <div class="candlestick green" style="left: 14%; bottom: 25%; --h: 60px; --body-h: 15px; --body-b: 22px; --anim-duration: 5.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Inverted Hammer / Shooting Star -->
+                                <div class="candlestick red" style="left: 18%; bottom: 30%; --h: 55px; --body-h: 10px; --body-b: 5px; --anim-duration: 6.8s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Doji -->
+                                <div class="candlestick red" style="left: 22%; bottom: 28%; --h: 70px; --body-h: 4px; --body-b: 33px; --anim-duration: 7.1s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Hammer -->
+                                <div class="candlestick green" style="left: 26%; bottom: 26%; --h: 80px; --body-h: 15px; --body-b: 60px; --anim-duration: 5.9s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 30%; bottom: 30%; --h: 60px; --body-h: 40px; --body-b: 10px; --anim-duration: 5.1s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 34%; bottom: 35%; --h: 40px; --body-h: 20px; --body-b: 5px; --anim-duration: 4.8s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 38%; bottom: 45%; --h: 50px; --body-h: 25px; --body-b: 10px; --anim-duration: 7.4s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 40%; bottom: 25%; --h: 70px; --body-h: 40px; --body-b: 20px; --anim-duration: 5.3s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 42%; bottom: 55%; --h: 75px; --body-h: 50px; --body-b: 10px; --anim-duration: 6.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 46%; bottom: 20%; --h: 65px; --body-h: 35px; --body-b: 15px; --anim-duration: 8.0s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 50%; bottom: 22%; --h: 85px; --body-h: 25px; --body-b: 40px; --anim-duration: 7.2s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Long Bullish Candle -->
+                                <div class="candlestick green" style="left: 54%; bottom: 25%; --h: 110px; --body-h: 80px; --body-b: 10px; --anim-duration: 5.2s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 58%; bottom: 42%; --h: 80px; --body-h: 40px; --body-b: 15px; --anim-duration: 7.6s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 62%; bottom: 50%; --h: 50px; --body-h: 30px; --body-b: 5px; --anim-duration: 6.9s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 66%; bottom: 48%; --h: 40px; --body-h: 20px; --body-b: 10px; --anim-duration: 4.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 70%; bottom: 50%; --h: 55px; --body-h: 20px; --body-b: 15px; --anim-duration: 6.7s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 72%; bottom: 28%; --h: 80px; --body-h: 30px; --body-b: 40px; --anim-duration: 6.6s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 74%; bottom: 52%; --h: 60px; --body-h: 35px; --body-b: 10px; --anim-duration: 7.0s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Another Spinning Top -->
+                                <div class="candlestick red" style="left: 78%; bottom: 55%; --h: 45px; --body-h: 10px; --body-b: 17px; --anim-duration: 6.1s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 82%; bottom: 58%; --h: 70px; --body-h: 20px; --body-b: 20px; --anim-duration: 7.3s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Bullish Marubozu (almost no wicks) -->
+                                <div class="candlestick green" style="left: 86%; bottom: 62%; --h: 120px; --body-h: 115px; --body-b: 2px; --anim-duration: 5.8s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 90%; bottom: 80%; --h: 90px; --body-h: 50px; --body-b: 15px; --anim-duration: 7.9s;"><div class="wick"></div><div class="body"></div></div>
+                                <!-- Added Candlesticks to fill the gap -->
+                                <div class="candlestick red" style="left: 93%; bottom: 65%; --h: 80px; --body-h: 60px; --body-b: 10px; --anim-duration: 6.3s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick red" style="left: 96%; bottom: 45%; --h: 70px; --body-h: 55px; --body-b: 5px; --anim-duration: 7.5s;"><div class="wick"></div><div class="body"></div></div>
+                                <div class="candlestick green" style="left: 99%; bottom: 30%; --h: 60px; --body-h: 20px; --body-b: 30px; --anim-duration: 5.6s;"><div class="wick"></div><div class="body"></div></div>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-10 sm:py-12 bg-[#0D1117]">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center stagger-group">
+                    <div class="card-bg p-4 sm:p-6 reveal-on-scroll">
+                        <h3 class="text-3xl sm:text-4xl font-bold text-blue-400 counter" data-target="50k+">0</h3>
+                        <p class="text-gray-400 text-sm mt-1">Trades logged and analyzed</p>
+                    </div>
+                    <div class="card-bg p-4 sm:p-6 reveal-on-scroll">
+                        <h3 class="text-3xl sm:text-4xl font-bold text-green-400 counter" data-target="2.5x">0</h3>
+                        <p class="text-gray-400 text-sm mt-1">Disciplined trades</p>
+                    </div>
+                    <div class="card-bg p-4 sm:p-6 reveal-on-scroll">
+                        <h3 class="text-3xl sm:text-4xl font-bold text-red-400 counter" data-target="-63%">0</h3>
+                        <p class="text-gray-400 text-sm mt-1">Emotional trades</p>
+                    </div>
+                    <div class="card-bg p-4 sm:p-6 reveal-on-scroll">
+                        <h3 class="text-3xl sm:text-4xl font-bold text-yellow-400 counter" data-target="2K+">0</h3>
+                        <p class="text-gray-400 text-sm mt-1">Active traders on Tradlyst</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16 sm:py-20">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Everything You Need to Document & Improve Your Trades</h2>
+                    <p class="mt-2 text-gray-400">Powerful features to help traders track performance, refine strategies, and grow consistently.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-group">
+                    <div class="card-bg p-6 reveal-on-scroll">
+                        <h3 class="text-xl font-semibold text-white mb-2">Advanced Analytics</h3>
+                        <p class="text-gray-400 mb-4">Gain powerful trading insights with detailed reports and visualizations.</p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Win rate by strategy, market, etc.</li>
+                            <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Profit factor & expectancy analysis</li>
+                            <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> 35+ in-depth performance reports</li>
+                        </ul>
+                    </div>
+                    <div class="card-bg p-6 reveal-on-scroll">
+                        <h3 class="text-xl font-semibold text-white mb-2">AI Summarizer</h3>
+                        <p class="text-gray-400 mb-4">Let AI instantly analyze your trades and spot patterns you might have missed.</p>
+                        <ul class="space-y-2 text-gray-300">
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Auto-generated trade summaries</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Performance insights in plain English</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Strength & weakness detection</li>
+                        </ul>
+                    </div>
+                    <div class="card-bg p-6 reveal-on-scroll">
+                        <h3 class="text-xl font-semibold text-white mb-2">Psychology Tracking</h3>
+                        <p class="text-gray-400 mb-4">Identify patterns in your behavior and market performance.</p>
+                         <ul class="space-y-2 text-gray-300">
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Emotional tagging for trades</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Emotional state analysis</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Review mindset trends</li>
+                        </ul>
+                    </div>
+                    <div class="card-bg p-6 reveal-on-scroll">
+                        <h3 class="text-xl font-semibold text-white mb-2">Automated Trade Importing</h3>
+                        <p class="text-gray-400 mb-4">Sync your trades effortlessly from Zerodha, Upstox, and more.</p>
+                         <ul class="space-y-2 text-gray-300">
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Eliminate manual data entry</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Secure, read-only connections</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Import months of history in minutes</li>
+                        </ul>
+                    </div>
+                    <div class="card-bg p-6 reveal-on-scroll">
+                        <h3 class="text-xl font-semibold text-white mb-2">Customizable Dashboards</h3>
+                        <p class="text-gray-400 mb-4">Arrange your workspace to see the metrics that matter most to you.</p>
+                         <ul class="space-y-2 text-gray-300">
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Drag-and-drop widgets</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Save multiple dashboard layouts</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Focus on your key performance indicators</li>
+                        </ul>
+                    </div>
+                    <div class="card-bg p-6 reveal-on-scroll">
+                        <h3 class="text-xl font-semibold text-white mb-2">Secure & Private</h3>
+                        <p class="text-gray-400 mb-4">Your trading data is yours alone. We prioritize your privacy and security.</p>
+                         <ul class="space-y-2 text-gray-300">
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Bank-level 256-bit AES encryption</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> Anonymous performance benchmarks</li>
+                           <li class="flex items-center feature-list-item"><span class="text-green-500 mr-2 feature-checkmark">✓</span> We never sell your data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Tradlyst Section -->
+        <section id="why-tradlyst" class="py-16 sm:py-20 bg-[#161B22]/50">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Why Tradlyst?</h2>
+                    <p class="mt-2 text-gray-400 max-w-2xl mx-auto">We're more than just a journal; we're your dedicated partner in achieving trading mastery.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-group">
+                    <div class="card-bg p-6 text-center reveal-on-scroll flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center" aria-hidden="true">
+                            <svg class="w-14 h-14 animate-india-flag" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <clipPath id="indiaIconClip">
+                                        <circle cx="32" cy="32" r="28"/>
+                                    </clipPath>
+                                </defs>
+                                <g clip-path="url(#indiaIconClip)">
+                                    <rect x="0" y="4" width="64" height="18.67" fill="#FF9933"/>
+                                    <rect x="0" y="22.67" width="64" height="18.67" fill="#FFFFFF"/>
+                                    <rect x="0" y="41.34" width="64" height="18.67" fill="#138808"/>
+                                    <circle cx="32" cy="32" r="7" fill="none" stroke="#0000CD" stroke-width="1.5"/>
+                                    <g transform="translate(32,32)" stroke="#0000CD" stroke-width="1.5" stroke-linecap="round">
+                                        <path d="M0 0 L0 -7"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(30)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(60)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(90)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(120)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(150)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(180)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(210)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(240)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(270)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(300)"/>
+                                        <path d="M0 0 L0 -7" transform="rotate(330)"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Designed for Indian Traders</h3>
+                        <p class="text-gray-400">From seamless broker integrations with Zerodha & Upstox to understanding the nuances of the NSE/BSE, every feature is built for you.</p>
+                    </div>
+                    <div class="card-bg p-6 text-center reveal-on-scroll flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center" aria-hidden="true">
+                           <i class="fa-solid fa-brain fa-flip-horizontal fa-3x animate-brain" style="color: #e665ca;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">AI-Powered Insights</h3>
+                        <p class="text-gray-400">Our AI doesn't just show you data; it reveals the hidden psychological patterns and strategic leaks that are holding you back.</p>
+                    </div>
+                    <div class="card-bg p-6 text-center reveal-on-scroll flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center" aria-hidden="true">
+                           <i class="fa-solid fa-bullseye fa-3x animate-bullseye" style="color: #f05c5c;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Unmatched Discipline Tracking</h3>
+                        <p class="text-gray-400">Go beyond P&L. Tag emotional states, rate your execution, and get actionable feedback to eliminate costly behavioral mistakes.</p>
+                    </div>
+                    <div class="card-bg p-6 text-center reveal-on-scroll flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center" aria-hidden="true">
+                            <i class="fa-solid fa-chart-simple fa-3x animate-chart" style="color: #22ba17;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Data Over Drama</h3>
+                        <p class="text-gray-400">Stop making decisions based on gut feelings or market noise. Tradlyst provides the hard data you need to trade with objectivity and confidence.</p>
+                    </div>
+                    <div class="card-bg p-6 text-center reveal-on-scroll flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center" aria-hidden="true">
+                           <i class="fa-solid fa-shield-halved fa-3x animate-shield" style="color: #2b96e9;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Your Data, Your Edge</h3>
+                        <p class="text-gray-400">Your trading data is your most valuable asset. We treat it with bank-level security and absolute privacy. It is never shared or sold.</p>
+                    </div>
+                    <div class="card-bg p-6 text-center reveal-on-scroll flex flex-col items-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center" aria-hidden="true">
+                           <i class="fa-solid fa-rocket fa-3x animate-rocket" style="color: #11e8cf;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Built for Growth</h3>
+                        <p class="text-gray-400">Tradlyst is constantly evolving with new features based on feedback from serious traders. Grow with a platform that's as ambitious as you are.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Comparison Section -->
+        <section id="comparison" class="py-16 sm:py-20">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Stop Guessing, Start Analyzing</h2>
+                    <p class="mt-2 text-gray-400 max-w-2xl mx-auto">See how journaling with Tradlyst compares to relying on a basic spreadsheet.</p>
+                </div>
+                <div class="card-bg max-w-4xl mx-auto overflow-hidden reveal-on-scroll">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left comparison-table min-w-[600px]">
+                            <thead class="bg-gray-800/50">
+                                <tr>
+                                    <th class="p-4 md:p-6 text-lg font-semibold text-white">Feature</th>
+                                    <th class="p-4 md:p-6 text-lg font-semibold text-white text-center">Tradlyst</th>
+                                    <th class="p-4 md:p-6 text-lg font-semibold text-white text-center">Spreadsheet</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-800">
+                                <tr class="hover:bg-gray-800/30">
+                                    <td class="p-4 md:p-6 font-medium text-gray-300">Automated Trade Importing</td>
+                                    <td class="p-4 md:p-6 text-center text-green-400 text-2xl">✓</td>
+                                    <td class="p-4 md:p-6 text-center text-red-400 text-2xl">✗</td>
+                                </tr>
+                                <tr class="hover:bg-gray-800/30">
+                                    <td class="p-4 md:p-6 font-medium text-gray-300">AI-Powered Summaries</td>
+                                    <td class="p-4 md:p-6 text-center text-green-400 text-2xl">✓</td>
+                                    <td class="p-4 md:p-6 text-center text-red-400 text-2xl">✗</td>
+                                </tr>
+                                 <tr class="hover:bg-gray-800/30">
+                                    <td class="p-4 md:p-6 font-medium text-gray-300">Psychology & Emotion Tracking</td>
+                                    <td class="p-4 md:p-6 text-center text-green-400 text-2xl">✓</td>
+                                    <td class="p-4 md:p-6 text-center text-red-400 text-2xl">✗</td>
+                                </tr>
+                                <tr class="hover:bg-gray-800/30">
+                                    <td class="p-4 md:p-6 font-medium text-gray-300">35+ Interactive Performance Reports</td>
+                                    <td class="p-4 md:p-6 text-center text-green-400 text-2xl">✓</td>
+                                    <td class="p-4 md:p-6 text-center text-red-400 text-2xl">✗</td>
+                                </tr>
+                                 <tr class="hover:bg-gray-800/30">
+                                    <td class="p-4 md:p-6 font-medium text-gray-300">Manual Data Entry & Formula Errors</td>
+                                    <td class="p-4 md:p-6 text-center text-green-400 text-2xl">✓ <span class="text-sm text-gray-400">(No Errors)</span></td>
+                                    <td class="p-4 md:p-6 text-center text-red-400 text-2xl">✗ <span class="text-sm text-gray-400">(Error-prone)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-16 sm:py-20 bg-[#161B22]/50">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">How It Works</h2>
+                    <p class="mt-2 text-gray-400 max-w-2xl mx-auto">A simple, 5-step process to turn raw data into confident, data-driven decisions.</p>
+                </div>
+        
+                <div class="relative">
+                    <!-- Connecting line -->
+                    <div class="absolute top-1/2 left-0 w-full h-px bg-gray-700/70 hidden lg:block" aria-hidden="true"></div>
+        
+                    <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+                        <!-- Step 1 -->
+                        <div class="process-card card-bg reveal-on-scroll" style="--card-color: #22c55e; --card-color-hsl: 145, 63%, 49%; --delay: 0s;">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="process-number-box">
+                                    <span>01</span>
+                                </div>
+                                <i class="fa-solid fa-cloud-arrow-up fa-2x process-icon"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white">Collect Raw Trade Data</h3>
+                            <p class="mt-2 text-gray-400 text-sm">Quickly get your trading history into the system via CSV upload or detailed manual logging. Capture entries, exits, size, costs.</p>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="process-card card-bg reveal-on-scroll" style="--card-color: #14b8a6; --card-color-hsl: 172, 80%, 41%; --delay: 0.1s;">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="process-number-box">
+                                    <span>02</span>
+                                </div>
+                                <i class="fa-solid fa-tags fa-2x process-icon"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white">Structure & Enrich Information</h3>
+                            <p class="mt-2 text-gray-400 text-sm">Use Tradlyst's tagging system to add critical context – strategy used, emotions felt, mistakes identified, execution quality.</p>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="process-card card-bg reveal-on-scroll" style="--card-color: #3b82f6; --card-color-hsl: 217, 91%, 60%; --delay: 0.2s;">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="process-number-box">
+                                    <span>03</span>
+                                </div>
+                                <i class="fa-solid fa-chart-line fa-2x process-icon"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white">Visualize Performance Trends</h3>
+                            <p class="mt-2 text-gray-400 text-sm">Instantly see your progress through dynamic equity curves, P&L charts, win rate trackers, and performance breakdowns.</p>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="process-card card-bg reveal-on-scroll" style="--card-color: #8b5cf6; --card-color-hsl: 258, 90%, 65%; --delay: 0.3s;">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="process-number-box">
+                                    <span>04</span>
+                                </div>
+                                <i class="fa-solid fa-robot fa-2x process-icon"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white">Leverage AI for Deeper Insights</h3>
+                            <p class="mt-2 text-gray-400 text-sm">Let the AI Analyst process your enriched data to automatically generate summaries, spot biases, and highlight patterns.</p>
+                        </div>
+                        <!-- Step 5 -->
+                        <div class="process-card card-bg reveal-on-scroll" style="--card-color: #f97316; --card-color-hsl: 27, 95%, 53%; --delay: 0.4s;">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="process-number-box">
+                                    <span>05</span>
+                                </div>
+                                <i class="fa-solid fa-bullseye fa-2x process-icon"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white">Make Data-Driven Adjustments</h3>
+                            <p class="mt-2 text-gray-400 text-sm">Use visualizations, reports, and AI feedback to confidently refine your strategies and make informed trading decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 sm:py-20">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">What Our Traders Say</h2>
+                    <p class="mt-2 text-gray-400">Hear from early users who transformed their performance</p>
+                </div>
+                <div class="relative max-w-6xl mx-auto">
+                    <div id="testimonial-wrapper">
+                        <div id="testimonial-carousel" class="flex gap-8">
+                            
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"I separate strategy issues from execution now. Reviewing trades brought massive clarity. I finally know what to fix."</p>
+                                <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=A" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Abhay, an Equity Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Abhay</h4>
+                                        <p class="text-gray-400 text-sm">Equity Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"I could literally see my emotional mistakes like fear-based exits or revenge trades. That one insight changed everything for me."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/10B981/FFFFFF?text=R" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Rajvansh, a Student" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Rajvansh</h4>
+                                        <p class="text-gray-400 text-sm">Student</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"I only trade twice a week, but journaling keeps me consistent. I learn from every mistake and feel much more in control."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/F59E0B/FFFFFF?text=AS" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Abhinav Singh, a Working Professional" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Abhinav Singh</h4>
+                                        <p class="text-gray-400 text-sm">Working Professional</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"The psychology tracking is a game-changer. Tradlyst helped me quantify how greed and fear were affecting my P&L. I'm trading much more objectively now."</p>
+                                <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/EC4899/FFFFFF?text=PS" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Priya Sharma, an Options Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Priya Sharma</h4>
+                                        <p class="text-gray-400 text-sm">Options Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"Automated importing from Zerodha saves me hours every week. I can focus on analysis, not data entry. The analytics are deeper than anything I could build in Excel."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/8B5CF6/FFFFFF?text=VK" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Vikram Kumar, a Swing Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Vikram Kumar</h4>
+                                        <p class="text-gray-400 text-sm">Swing Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"As a long-term investor, I use Tradlyst to review my decisions and holding periods. It's fantastic for keeping a detailed record and learning from past entries."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/F97316/FFFFFF?text=AD" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Anjali Desai, an Investor" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Anjali Desai</h4>
+                                        <p class="text-gray-400 text-sm">Investor</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"The platform is incredibly fast and intuitive. I can log my trades and thoughts in seconds, which is crucial for an intraday trader. Highly recommended!"</p>
+                                <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/34D399/FFFFFF?text=SG" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Sameer Gupta, an Intraday Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Sameer Gupta</h4>
+                                        <p class="text-gray-400 text-sm">Intraday Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"Finally, a journaling tool that understands the Indian market. The features are perfectly tailored to my needs. My discipline has improved tenfold."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/EF4444/FFFFFF?text=NR" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Neha Reddy, a Commodity Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Neha Reddy</h4>
+                                        <p class="text-gray-400 text-sm">Commodity Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"The AI summarizer is like having a personal trading coach. It points out patterns I would've never seen on my own. It's an essential part of my daily review process."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/6366F1/FFFFFF?text=KM" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Karan Malhotra, an F&O Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Karan Malhotra</h4>
+                                        <p class="text-gray-400 text-sm">F&O Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"Tradlyst made journaling accessible. I used to find it tedious, but now it's an integral part of my trading routine. The insights have been invaluable."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/FBBF24/FFFFFF?text=SR" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Sunita Rao, a Working Professional" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Sunita Rao</h4>
+                                        <p class="text-gray-400 text-sm">Working Professional</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"Balancing a full-time job and trading is tough, but Tradlyst makes it manageable. The quick import and mobile-friendly design let me review my trades anytime, anywhere."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/D946EF/FFFFFF?text=RM" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Rohan Mehta, a Part-time Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Rohan Mehta</h4>
+                                        <p class="text-gray-400 text-sm">Part-time Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"The detailed analytics helped me pinpoint the exact currency pairs and times of day where I'm most profitable. Tradlyst is essential for any serious forex trader."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/22C55E/FFFFFF?text=AJ" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Ankit Jain, a Forex Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Ankit Jain</h4>
+                                        <p class="text-gray-400 text-sm">Forex Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"As a beginner, I was making so many mistakes. Journaling with Tradlyst showed me my patterns of FOMO and revenge trading. My learning curve has been so much faster because of it."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/38BDF8/FFFFFF?text=SP" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Sneha Patel, a New Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Sneha Patel</h4>
+                                        <p class="text-gray-400 text-sm">New Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"I use Tradlyst to verify the live performance of my algos. The automated import makes it effortless to compare expected vs. actual results and track drawdowns."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/A78BFA/FFFFFF?text=AI" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Arjun Iyer, an Algorithmic Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Arjun Iyer</h4>
+                                        <p class="text-gray-400 text-sm">Algorithmic Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card flex flex-col flex-shrink-0 card-bg p-6">
+                                <div class="flex text-yellow-400 mb-4">★★★★★</div>
+                                <p class="text-gray-300 mb-4 flex-grow">"This is the most professional trading journal I've used. The focus on psychology and data-driven reviews has been a massive factor in my consistency this year."</p>
+                                 <div class="flex items-center">
+                                     <img src="https://placehold.co/40x40/F472B6/FFFFFF?text=MS" class="w-10 h-10 rounded-full mr-3" alt="Profile picture of Meera Singh, a Full-time Trader" width="40" height="40" loading="lazy" decoding="async">
+                                    <div>
+                                        <h4 class="text-white font-semibold">Meera Singh</h4>
+                                        <p class="text-gray-400 text-sm">Full-time Trader</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="testimonial-prev" aria-label="Previous testimonial" class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 bg-gray-800/50 hover:bg-gray-700/80 text-white rounded-full p-2 transition z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="testimonial-next" aria-label="Next testimonial" class="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2 bg-gray-800/50 hover:bg-gray-700/80 text-white rounded-full p-2 transition z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+                <div id="testimonial-dots" class="flex justify-center mt-6 space-x-2"></div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-16 sm:py-20 bg-[#161B22]/50">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Simple, Transparent Pricing</h2>
+                    <p class="mt-2 text-gray-400 max-w-xl mx-auto">Choose the plan that's right for you. No hidden fees, cancel anytime.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Monthly Plan -->
+                    <div class="card-bg p-8 flex flex-col reveal-on-scroll">
+                        <h3 class="text-2xl font-semibold text-white">Monthly Plan</h3>
+                        <p class="text-gray-400 mt-2 mb-6">For flexible, short-term analysis</p>
+                        <p class="text-4xl font-bold text-white mb-6">₹599 <span class="text-lg font-normal text-gray-400">/ month</span></p>
+                        <ul class="space-y-3 text-gray-300 mb-8 flex-grow">
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Unlimited trades</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Basic performance analytics</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Manual trade entry</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Psychology & discipline tracking</li>
+                        </ul>
+                        <a href="#pricing" class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition btn-ripple">Get Started</a>
+                    </div>
+
+                    <!-- Annual Plan -->
+                    <div class="card-bg p-8 flex flex-col border-2 border-green-500 relative reveal-on-scroll md:scale-105">
+                        <span class="absolute top-0 right-8 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-b-lg">Most Popular</span>
+                        <h3 class="text-2xl font-semibold text-white">Annual Plan</h3>
+                        <p class="text-gray-400 mt-2 mb-6">For dedicated, active traders</p>
+                        <div class="mb-6">
+                            <p class="text-4xl font-bold text-white">₹4999 <span class="text-lg font-normal text-gray-400">/ year</span></p>
+                            <p class="text-sm text-green-400 mt-1">Equals ₹417/month - Save over 30%!</p>
+                        </div>
+                        <ul class="space-y-3 text-gray-300 mb-8 flex-grow">
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> <strong>Unlimited</strong> trades</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> <strong>Advanced</strong> performance analytics</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> <strong>Automated</strong> trade importing</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> <strong>AI-Powered</strong> trade summarizer</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Psychology & discipline tracking</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Customizable dashboards</li>
+                        </ul>
+                        <a href="#pricing" class="w-full text-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 cta-pulse-white btn-ripple">Start Your Annual Journey</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FAQ Section -->
+        <section id="faq" class="pt-16 sm:pt-20 pb-8 sm:pb-10">
+            <div class="container mx-auto px-4 sm:px-6 max-w-3xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Frequently Asked Questions</h2>
+                    <p class="mt-2 text-gray-400">Find answers to common questions about Tradlyst.</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="card-bg">
+                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-1" aria-expanded="false" aria-controls="faq-answer-1">
+                            <h3 class="text-base font-semibold text-white text-left">How does Tradlyst help improve my trading?</h3>
+                            <div class="faq-icon" aria-hidden="true">
+                                <span class="faq-icon-bar"></span>
+                                <span class="faq-icon-bar"></span>
+                            </div>
+                        </button>
+                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-1" role="region" aria-labelledby="faq-question-1">
+                            <p>Tradlyst helps you improve by providing deep insights into your trading patterns. By logging your trades, tracking your psychological state, and analyzing detailed performance reports, you can identify what's working and what's not, eliminate costly emotional mistakes, and refine your strategies with data-driven confidence.</p>
+                        </div>
+                    </div>
+                    <div class="card-bg">
+                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-2" aria-expanded="false" aria-controls="faq-answer-2">
+                            <h3 class="text-base font-semibold text-white text-left">Is my trading data secure?</h3>
+                            <div class="faq-icon" aria-hidden="true">
+                                <span class="faq-icon-bar"></span>
+                                <span class="faq-icon-bar"></span>
+                            </div>
+                        </button>
+                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-2" role="region" aria-labelledby="faq-question-2">
+                            <p>Absolutely. We use bank-level 256-bit AES encryption for all your data. Your privacy is our top priority, and we will never sell or share your individual trading data.</p>
+                        </div>
+                    </div>
+                    <div class="card-bg">
+                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-3" aria-expanded="false" aria-controls="faq-answer-3">
+                            <h3 class="text-base font-semibold text-white text-left">Are there any additional costs or fees?</h3>
+                            <div class="faq-icon" aria-hidden="true">
+                                <span class="faq-icon-bar"></span>
+                                <span class="faq-icon-bar"></span>
+                            </div>
+                        </button>
+                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-3" role="region" aria-labelledby="faq-question-3">
+                           <p>No. Our pricing is completely transparent. The price you see for our plans is the price you pay, with no hidden fees, setup costs, or additional charges.</p>
+                        </div>
+                    </div>
+                    <div class="card-bg">
+                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-4" aria-expanded="false" aria-controls="faq-answer-4">
+                            <h3 class="text-base font-semibold text-white text-left">Which brokers do you support for automatic import?</h3>
+                            <div class="faq-icon" aria-hidden="true">
+                                <span class="faq-icon-bar"></span>
+                                <span class="faq-icon-bar"></span>
+                            </div>
+                        </button>
+                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-4" role="region" aria-labelledby="faq-question-4">
+                            <p>We currently support automated trade importing for Zerodha and Upstox. We are actively working on adding support for other popular Indian brokers like AngelOne, Fyers, and Groww. Stay tuned!</p>
+                        </div>
+                    </div>
+                     <div class="card-bg">
+                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-5" aria-expanded="false" aria-controls="faq-answer-5">
+                            <h3 class="text-base font-semibold text-white text-left">Can I cancel my subscription at any time?</h3>
+                            <div class="faq-icon" aria-hidden="true">
+                                <span class="faq-icon-bar"></span>
+                                <span class="faq-icon-bar"></span>
+                            </div>
+                        </button>
+                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-5" role="region" aria-labelledby="faq-question-5">
+                            <p>Yes, you can cancel your Pro subscription at any time. You will retain access to all Pro features until the end of your current billing period.</p>
+                        </div>
+                    </div>
+                     <div class="card-bg">
+                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-6" aria-expanded="false" aria-controls="faq-answer-6">
+                            <h3 class="text-base font-semibold text-white text-left">Is there a mobile app?</h3>
+                             <div class="faq-icon" aria-hidden="true">
+                                <span class="faq-icon-bar"></span>
+                                <span class="faq-icon-bar"></span>
+                            </div>
+                        </button>
+                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-6" role="region" aria-labelledby="faq-question-6">
+                            <p>A native mobile app for iOS and Android is currently in development and is one of our top priorities. You can follow our public roadmap for the latest updates on its release. In the meantime, our web platform is fully responsive and works great on mobile browsers.</p>
+                        </div>
+                    </div>
+                    <div class="card-bg">
+                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-7" aria-expanded="false" aria-controls="faq-answer-7">
+                            <h3 class="text-base font-semibold text-white text-left">What kind of analytics does the Pro plan offer?</h3>
+                             <div class="faq-icon" aria-hidden="true">
+                                <span class="faq-icon-bar"></span>
+                                <span class="faq-icon-bar"></span>
+                            </div>
+                        </button>
+                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-7" role="region" aria-labelledby="faq-question-7">
+                            <p>The Pro plan offers over 35 advanced metrics, including deep dives into your performance by strategy, instrument, time of day, and market conditions. You can track your equity curve, profit factor, expectancy, max adverse excursion (MAE), and max favorable excursion (MFE) to get a complete picture of your trading edge.</p>
+                        </div>
+                    </div>
+                    <div class="card-bg">
+                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-8" aria-expanded="false" aria-controls="faq-answer-8">
+                            <h3 class="text-base font-semibold text-white text-left">Can I import my past trading history?</h3>
+                             <div class="faq-icon" aria-hidden="true">
+                                <span class="faq-icon-bar"></span>
+                                <span class="faq-icon-bar"></span>
+                            </div>
+                        </button>
+                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-8" role="region" aria-labelledby="faq-question-8">
+                            <p>Yes! When you connect your broker account (like Zerodha or Upstox) for the first time, you can import several months of your past trading history. This allows you to immediately start analyzing your past performance and find valuable insights.</p>
+                        </div>
+                    </div>
+                    <div class="card-bg">
+                        <button type="button" class="faq-question cursor-pointer py-1 px-3 flex justify-between items-center gap-4" id="faq-question-9" aria-expanded="false" aria-controls="faq-answer-9">
+                            <h3 class="text-base font-semibold text-white text-left">How does the AI Summarizer work?</h3>
+                             <div class="faq-icon" aria-hidden="true">
+                                <span class="faq-icon-bar"></span>
+                                <span class="faq-icon-bar"></span>
+                            </div>
+                        </button>
+                        <div class="faq-answer px-3 pb-1 text-gray-400" id="faq-answer-9" role="region" aria-labelledby="faq-question-9">
+                            <p>Our AI Summarizer uses advanced language models to analyze your logged trades for a specific period. It identifies your most profitable and least profitable patterns, highlights potential emotional trading habits (like revenge trading after a loss), and provides a concise, easy-to-read summary of your strengths and weaknesses in plain English.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 bg-gray-900/90 backdrop-blur-sm border-t border-gray-700 p-4 transform translate-y-full z-[100]">
+        <div class="container mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-gray-300 text-center sm:text-left">
+                We use cookies to enhance your experience. By clicking "Accept", you agree to our use of cookies. <a href="./privacy.html" class="text-blue-400 hover:underline">Learn more</a>.
+            </p>
+            <div class="flex items-center gap-4 flex-shrink-0">
+                <button id="cookie-decline-btn" class="text-sm text-gray-400 hover:text-white transition">Decline</button>
+                <button id="cookie-accept-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition text-sm btn-ripple">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#010409] border-t border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-xl font-bold text-white mb-2">Tradlyst</h3>
+                    <p class="text-gray-300">India's most advanced trading journal, built for serious traders looking to improve their performance.</p>
+                     <div class="mt-6">
+                        <h4 class="font-semibold text-gray-200 mb-4">Follow Us</h4>
+                        <div class="footer-social-links">
+                            <a href="#" class="social-icon-link" aria-label="YouTube">
+                                <i class="fa-brands fa-youtube fa-lg"></i>
+                            </a>
+                            <a href="#" class="social-icon-link" aria-label="X">
+                                <i class="fa-brands fa-x-twitter fa-lg"></i>
+                            </a>
+                            <a href="#" class="social-icon-link" aria-label="Facebook">
+                                <i class="fa-brands fa-facebook-f fa-lg"></i>
+                            </a>
+                            <a href="#" class="social-icon-link" aria-label="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in fa-lg"></i>
+                            </a>
+                            <a href="#" class="social-icon-link" aria-label="Pinterest">
+                                <i class="fa-brands fa-pinterest-p fa-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-200 mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="./about.html" class="inline-block hover:text-white transition hover:-translate-y-0.5">About Us</a></li>
+                        <li><a href="./contact.html" class="inline-block hover:text-white transition hover:-translate-y-0.5">Contact Us</a></li>
+                        <li><a href="./careers.html" class="inline-block hover:text-white transition hover:-translate-y-0.5">Careers</a></li>
+                        <li><a href="./roadmap.html" class="inline-block hover:text-white transition hover:-translate-y-0.5">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-200 mb-4">Legal</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="./terms.html" class="inline-block hover:text-white transition hover:-translate-y-0.5">Terms & Conditions</a></li>
+                        <li><a href="./privacy.html" class="inline-block hover:text-white transition hover:-translate-y-0.5">Privacy Policy</a></li>
+                        <li><a href="./refund.html" class="inline-block hover:text-white transition hover:-translate-y-0.5">Refund & Cancellation</a></li>
+                        <li><a href="./disclaimer.html" class="inline-block hover:text-white transition hover:-translate-y-0.5">Legal Disclaimer</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-semibold text-gray-200 mb-4">Location</h4>
+                    <p class="text-gray-400 text-sm">
+                        New Delhi, India
+                    </p>
+                    <a href="mailto:contact@tradlyst.com" class="inline-block text-gray-400 hover:text-white transition text-sm mt-2 hover:-translate-y-0.5">Email: contact@tradlyst.com</a>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 Tradlyst. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top" class="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 shadow-lg transition transform hover:scale-110 btn-ripple">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+    <script src="index.js" defer></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
