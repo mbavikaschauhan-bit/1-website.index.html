@@ -598,32 +598,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
-// --- FAQ ACCORDION FUNCTIONALITY ---
-function toggleItem(itemNumber) {
-    const content = document.getElementById(`content-${itemNumber}`);
-    const button = document.getElementById(`faq-button-${itemNumber}`);
-    const iconPlus = document.getElementById(`icon-plus-${itemNumber}`);
-    const iconMinus = document.getElementById(`icon-minus-${itemNumber}`);
-    
-    // Safety check - ensure all elements exist
-    if (!content || !button || !iconPlus || !iconMinus) {
-        console.warn(`FAQ item ${itemNumber} elements not found`);
-        return;
-    }
-    
-    // Toggle the FAQ content
-    if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
-        // Expand the FAQ item
-        content.style.maxHeight = content.scrollHeight + 'px';
-        button.setAttribute('aria-expanded', 'true');
-        iconPlus.classList.add('hidden');
-        iconMinus.classList.remove('hidden');
-    } else {
-        // Collapse the FAQ item
-        content.style.maxHeight = '0px';
-        button.setAttribute('aria-expanded', 'false');
-        iconPlus.classList.remove('hidden');
-        iconMinus.classList.add('hidden');
-    }
-}
